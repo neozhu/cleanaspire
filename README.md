@@ -1,4 +1,4 @@
-## CleanAspire - .NET 9 Minimal API + Blazor WebAssembly PWA Template with Aspire Support 
+## CleanAspire - .NET 10 Minimal API + Blazor WebAssembly PWA Template with Aspire Support
 [![.NET](https://github.com/neozhu/cleanaspire/actions/workflows/dotnet.yml/badge.svg)](https://github.com/neozhu/cleanaspire/actions/workflows/dotnet.yml)
 [![CodeQL](https://github.com/neozhu/cleanaspire/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/neozhu/cleanaspire/actions/workflows/github-code-scanning/codeql)
 [![Build and Push Docker Image](https://github.com/neozhu/cleanaspire/actions/workflows/docker.yml/badge.svg)](https://github.com/neozhu/cleanaspire/actions/workflows/docker.yml)
@@ -7,7 +7,7 @@
 
 ### 🚀 Overview  
 
-**CleanAspire** is a cutting-edge, open-source template built on **.NET 9**, designed to accelerate the development of **lightweight**, **fast**, and **simple** Blazor WebAssembly or Progressive Web Applications (PWA). It seamlessly integrates **Minimal APIs**, **Aspire**, and **Scalar** for modern API documentation.  
+**CleanAspire** is a cutting-edge, open-source template built on **.NET 10** (and still compatible with **.NET 9** projects), designed to accelerate the development of **lightweight**, **fast**, and **simple** Blazor WebAssembly or Progressive Web Applications (PWA). It seamlessly integrates **Minimal APIs**, **Aspire**, and **Scalar** for modern API documentation.
 
 With a focus on **Clean Architecture** and **extreme code simplicity**, CleanAspire provides developers with the tools to create responsive and maintainable web applications with minimal effort. The template also supports **Microsoft.Kiota** to simplify API client generation, ensuring consistency and productivity in every project.  
 
@@ -37,8 +37,8 @@ By incorporating robust offline capabilities, CleanAspire empowers developers to
    - Fully integrated with **Aspire** for efficient application hosting and configuration.  
    - Simplifies the setup process while providing a robust foundation for lightweight applications.  
 
-2. **Fast and Minimal .NET 9 Minimal APIs**  
-   - Uses the latest .NET 9 features to create high-performance and efficient APIs.  
+2. **Fast and Minimal .NET 10 Minimal APIs**
+   - Uses the latest .NET 10 features to create high-performance and efficient APIs.
    - Includes **Scalar** for modern and concise OpenAPI documentation, replacing traditional Swagger tools.  
 
 3. **Designed for Simplicity and Speed**  
@@ -82,7 +82,7 @@ https://github.com/neozhu/cleanaspire/issues/34
 - **Lightweight and Fast:** Designed to create high-performance, minimal Blazor WebAssembly or PWA projects.  
 - **Effortless Development:** Extreme simplicity in code makes it easy to start quickly and scale effectively.  
 - **Advanced API Integration:** Automate client-side API generation with Microsoft.Kiota for faster results.  
-- **Future-Ready Architecture:** Leverages the latest .NET 9 capabilities and Aspire hosting for modern web applications.
+- **Future-Ready Architecture:** Leverages the latest .NET 10 capabilities and Aspire hosting for modern web applications.
 - 
 
 ### OpenAPI documentation

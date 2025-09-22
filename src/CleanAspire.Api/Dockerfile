@@ -1,5 +1,5 @@
 # Stage 1: Build the API Application
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY ["src/CleanAspire.Api/CleanAspire.Api.csproj", "src/CleanAspire.Api/"]
@@ -18,7 +18,7 @@ WORKDIR /src/src/CleanAspire.Api
 RUN dotnet publish "./CleanAspire.Api.csproj" -c Release -o /app/publish
 
 # Stage 2: Create the runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
 # Copy the build output from the previous stage

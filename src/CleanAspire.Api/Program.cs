@@ -85,7 +85,6 @@ builder.Services.AddOpenApi(options =>
 {
     options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
     options.UseCookieAuthentication();
-    options.UseExamples();
 });
 builder.Services.ConfigureHttpJsonOptions(options =>
 {

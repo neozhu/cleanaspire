@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
@@ -12,19 +12,19 @@
         <AssemblyName>CleanAspire.ClientApp</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.8" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0-rc.1.25451.107" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0-rc.1.25451.107" />
         <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
-        <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.19.0" />
-        <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.19.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.8" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.8" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="9.0.8" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.19.0" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.19.0" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.19.0" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.19.0" />
-        <PackageReference Include="MudBlazor" Version="8.11.0" />
+        <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.19.1" />
+        <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.19.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0-rc.1.25451.107" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-rc.1.25451.107" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="10.0.0-rc.1.25451.107" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.19.1" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.19.1" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.19.1" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.19.1" />
+        <PackageReference Include="MudBlazor" Version="8.12.0" />
         <PackageReference Include="Net.Codecrete.QrCodeGenerator" Version="2.0.7" />
         <PackageReference Include="OneOf" Version="3.0.271" />
     </ItemGroup>

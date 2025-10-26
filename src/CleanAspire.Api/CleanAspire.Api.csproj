@@ -11,20 +11,20 @@
         <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)</OpenApiDocumentsDirectory>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Bogus" Version="35.6.3" />
-        <PackageReference Include="Google.Apis.Auth" Version="1.71.0" />
+        <PackageReference Include="Bogus" Version="35.6.5" />
+        <PackageReference Include="Google.Apis.Auth" Version="1.72.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="10.0.0-rc.1.25451.107" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-rc.1.25451.107" />
         <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.0-rc.1.25451.107">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.OpenApi" Version="2.3.2" />
+        <PackageReference Include="Microsoft.OpenApi" Version="2.3.7" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0-rc.1.25451.107">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Scalar.AspNetCore" Version="2.8.5" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.9.0" />
         <PackageReference Include="Scrutor" Version="6.1.0" />
        
         <PackageReference Include="StrongGrid" Version="0.112.0" />

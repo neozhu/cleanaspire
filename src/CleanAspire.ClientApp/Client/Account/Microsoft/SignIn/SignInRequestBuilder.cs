@@ -74,6 +74,7 @@ namespace CleanAspire.Api.Client.Account.Microsoft.SignIn
 #endif
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/problem+json");
             return requestInfo;
         }
         /// <summary>

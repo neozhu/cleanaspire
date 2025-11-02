@@ -1,5 +1,6 @@
 ﻿@using CleanAspire.ClientApp.Components.Autocompletes
 @using CleanAspire.ClientApp.Services.Products
+@using static CleanAspire.Api.Client.Models.CreateProductCommand
 
 @inject ProductServiceProxy ProductServiceProxy
 <MudDialog>
@@ -19,10 +20,10 @@
                     </MudTextField>
                 </MudItem>
                 <MudItem xs="12" md="6">
-                    <MudEnumSelect TEnum="NullableOfProductCategoryDto?" @bind-Value="model.Category" For="@(() => model.Category)"
-                                   Label="@L["Category"]" Placeholder="@L["Category"]"
-                                   Required="true" RequiredError="@L["Category is required"]">
-                    </MudEnumSelect>
+					<MudEnumSelect TEnum="ProductCategory?" @bind-Value="model.Category" For="@(() => model.Category)"
+								   Label="@L["Category"]" Placeholder="@L["Category"]"
+								   Required="true" RequiredError="@L["Category is required"]">
+					</MudEnumSelect>
                 </MudItem>
                 <MudItem xs="12" md="6">
                     <PicklistAutocomplete T="string" PickList="PicklistType.UOM" @bind-Value="model.Uom" For="@(() => model.Uom)"
@@ -60,7 +61,7 @@
     bool success;
     string[] errors = { };
     [CascadingParameter] private IMudDialogInstance MudDialog { get; set; } = default!;
-    private CreateProductCommand model = new CreateProductCommand();
+	private CreateProductCommand model = new CreateProductCommand() { Category = null };
     private MudForm editForm = default!;
     private bool _saving;
     private void Cancel() => MudDialog.Cancel();

@@ -12,7 +12,7 @@ public class ProductDto
     public string Id { get; set; } = string.Empty;
     public string SKU { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
-    public ProductCategory? Category { get; set; }
+    public ProductCategory Category { get; set; }= ProductCategory.Electronics;
     public string? Description { get; set; }
     public decimal Price { get; set; } = 0;
     public string? Currency { get; set; }

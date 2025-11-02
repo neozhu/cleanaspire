@@ -2,6 +2,7 @@
 @using CleanAspire.ClientApp.Components.Autocompletes
 @using CleanAspire.ClientApp.Components.Breadcrumbs
 @using CleanAspire.ClientApp.Services.Products
+@using static CleanAspire.Api.Client.Models.UpdateProductCommand
 
 @inject ProductServiceProxy ProductServiceProxy
 
@@ -26,7 +27,7 @@
                     </MudTextField>
                 </MudItem>
                 <MudItem xs="12" md="6">
-                    <MudEnumSelect TEnum="NullableOfProductCategoryDto?" @bind-Value="model.Category" For="@(() => model.Category)"
+					<MudEnumSelect TEnum="ProductCategory?" @bind-Value="model.Category" For="@(() => model.Category)"
                     Label="@L["Category"]" Placeholder="@L["Category"]"
                     Required="true" RequiredError="@L["Category is required"]">
                     </MudEnumSelect>
@@ -62,27 +63,27 @@
     }
 </MudPaper>
 
-@code {
-    public string? Title;
-    [Parameter]
-    public string? Id { get; set; }
-    private bool _saving;
-    bool success;
-    string[] errors = { };
-    private UpdateProductCommand? model;
-    private MudForm editForm = default!;
-    private List<BreadcrumbItem> _breadcrumbItems = new List<BreadcrumbItem>
+	@code {
+	public string? Title;
+	[Parameter]
+	public string? Id { get; set; }
+	private bool _saving;
+	bool success;
+	string[] errors = { };
+	private UpdateProductCommand? model;
+	private MudForm editForm = default!;
+	private List<BreadcrumbItem> _breadcrumbItems = new List<BreadcrumbItem>
     {
         new BreadcrumbItem("Home", href: "/"),
         new BreadcrumbItem("Products", href: "/products/index")
     };
-    protected override async Task OnInitializedAsync()
-    {
-        var result = await ProductServiceProxy.GetProductByIdAsync(Id);
-        result.Switch(
-            dto =>
-            {
-                model = new()
+	protected override async Task OnInitializedAsync()
+	{
+		var result = await ProductServiceProxy.GetProductByIdAsync(Id);
+		result.Switch(
+			dto =>
+			{
+				model = new()
                     {
                         Id = dto.Id,
                         Sku = dto.Sku,

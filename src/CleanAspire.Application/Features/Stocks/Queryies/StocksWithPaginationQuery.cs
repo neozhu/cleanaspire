@@ -37,9 +37,9 @@ public class StocksWithPaginationQueryHandler : IRequestHandler<StocksWithPagina
                         {
                             Id = t.Id,
                             ProductId = t.ProductId,
-                            Product = t.ProductId != null ? new ProductDto
+                            Product = new ProductDto
                             {
-                                Category = t.Product?.Category,
+                                Category = t.Product?.Category?? ProductCategory.Electronics,
                                 Currency = t.Product?.Currency,
                                 Description = t.Product?.Description,
                                 Id = t.Product?.Id,
@@ -47,7 +47,7 @@ public class StocksWithPaginationQueryHandler : IRequestHandler<StocksWithPagina
                                 Price = t.Product?.Price ?? 0,
                                 SKU = t.Product?.SKU,
                                 UOM = t.Product?.UOM,
-                            } : null,
+                            },
                             Quantity = t.Quantity,
                             Location = t.Location
                         },

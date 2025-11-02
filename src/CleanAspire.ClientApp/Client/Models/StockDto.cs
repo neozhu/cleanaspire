@@ -37,10 +37,10 @@ namespace CleanAspire.Api.Client.Models
         /// <summary>The product property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::CleanAspire.Api.Client.Models.ProductDto2? Product { get; set; }
+        public global::CleanAspire.Api.Client.Models.ProductDto? Product { get; set; }
 #nullable restore
 #else
-        public global::CleanAspire.Api.Client.Models.ProductDto2 Product { get; set; }
+        public global::CleanAspire.Api.Client.Models.ProductDto Product { get; set; }
 #endif
         /// <summary>The productId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +66,7 @@ namespace CleanAspire.Api.Client.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::CleanAspire.Api.Client.Models.StockDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::CleanAspire.Api.Client.Models.StockDto();
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace CleanAspire.Api.Client.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lastModified", n => { LastModified = n.GetDateTimeOffsetValue(); } },
                 { "location", n => { Location = n.GetStringValue(); } },
-                { "product", n => { Product = n.GetObjectValue<global::CleanAspire.Api.Client.Models.ProductDto2>(global::CleanAspire.Api.Client.Models.ProductDto2.CreateFromDiscriminatorValue); } },
+                { "product", n => { Product = n.GetObjectValue<global::CleanAspire.Api.Client.Models.ProductDto>(global::CleanAspire.Api.Client.Models.ProductDto.CreateFromDiscriminatorValue); } },
                 { "productId", n => { ProductId = n.GetStringValue(); } },
                 { "quantity", n => { Quantity = n.GetIntValue(); } },
             };
@@ -92,12 +92,12 @@ namespace CleanAspire.Api.Client.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created", Created);
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("lastModified", LastModified);
             writer.WriteStringValue("location", Location);
-            writer.WriteObjectValue<global::CleanAspire.Api.Client.Models.ProductDto2>("product", Product);
+            writer.WriteObjectValue<global::CleanAspire.Api.Client.Models.ProductDto>("product", Product);
             writer.WriteStringValue("productId", ProductId);
             writer.WriteIntValue("quantity", Quantity);
             writer.WriteAdditionalData(AdditionalData);

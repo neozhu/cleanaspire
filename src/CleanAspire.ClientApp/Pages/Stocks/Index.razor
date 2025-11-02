@@ -45,25 +45,25 @@
         </TemplateColumn>
         <PropertyColumn Title="@L["SKU"]" Property="x => x.ProductId">
             <CellTemplate>
-                @context.Item.Product?.Sku
+				@context.Item.Product.Sku
             </CellTemplate>
         </PropertyColumn>
         <PropertyColumn Title="@L["Product Name"]" Property="x => x.ProductId" Sortable="false">
             <CellTemplate>
-                <MudText Typo="Typo.body1">@context.Item.Product?.Name</MudText>
-                <MudText Typo="Typo.body1">@context.Item.Product?.Description</MudText>
+                <MudText Typo="Typo.body1">@context.Item.Product.Name</MudText>
+				<MudText Typo="Typo.body1">@context.Item.Product.Description</MudText>
             </CellTemplate>
         </PropertyColumn>
         <PropertyColumn Title="@L["Location"]" Property="x => x.Location" />
         <PropertyColumn Title="@L["Quantity"]" Property="x => x.Quantity" Format="#,#" AggregateDefinition="_qtyAggregation" />
         <PropertyColumn Title="@L["UOM"]" Property="x => x.ProductId" Sortable="false">
             <CellTemplate>
-                @context.Item.Product?.Uom
+				@context.Item.Product.Uom
             </CellTemplate>
         </PropertyColumn>
         <PropertyColumn Title="@L["Amount"]" Property="x => x.Product" Sortable="false">
             <CellTemplate>
-                @($"{((context.Item.Quantity ?? 0) * (context.Item.Product?.Price ?? 0)).ToString("#,#")} {context.Item.Product?.Currency}")
+				@($"{((context.Item.Quantity) * (context.Item.Product.Price)).ToString()} {context.Item.Product.Currency}")
             </CellTemplate>
         </PropertyColumn>
     </Columns>

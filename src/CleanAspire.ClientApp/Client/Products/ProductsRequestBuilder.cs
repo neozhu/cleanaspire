@@ -84,7 +84,7 @@ namespace CleanAspire.Api.Client.Products
         public async Task<global::CleanAspire.Api.Client.Models.Unit> DeleteAsync(global::CleanAspire.Api.Client.Models.DeleteProductCommand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToDeleteRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -140,7 +140,7 @@ namespace CleanAspire.Api.Client.Products
         public async Task<global::CleanAspire.Api.Client.Models.ProductDto> PostAsync(global::CleanAspire.Api.Client.Models.CreateProductCommand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -170,7 +170,7 @@ namespace CleanAspire.Api.Client.Products
         public async Task<global::CleanAspire.Api.Client.Models.Unit> PutAsync(global::CleanAspire.Api.Client.Models.UpdateProductCommand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -196,7 +196,7 @@ namespace CleanAspire.Api.Client.Products
         public RequestInformation ToDeleteRequestInformation(global::CleanAspire.Api.Client.Models.DeleteProductCommand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
@@ -237,7 +237,7 @@ namespace CleanAspire.Api.Client.Products
         public RequestInformation ToPostRequestInformation(global::CleanAspire.Api.Client.Models.CreateProductCommand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
@@ -259,7 +259,7 @@ namespace CleanAspire.Api.Client.Products
         public RequestInformation ToPutRequestInformation(global::CleanAspire.Api.Client.Models.UpdateProductCommand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

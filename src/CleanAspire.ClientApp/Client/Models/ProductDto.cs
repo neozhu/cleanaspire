@@ -15,7 +15,7 @@ namespace CleanAspire.Api.Client.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The category property</summary>
-        public global::CleanAspire.Api.Client.Models.NullableOfProductCategoryDto? Category { get; set; }
+        public global::CleanAspire.Api.Client.Models.ProductCategory? Category { get; set; }
         /// <summary>The currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +49,7 @@ namespace CleanAspire.Api.Client.Models
         public string Name { get; set; }
 #endif
         /// <summary>The price property</summary>
-        public double? Price { get; set; }
+        public decimal? Price { get; set; }
         /// <summary>The sku property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +80,7 @@ namespace CleanAspire.Api.Client.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::CleanAspire.Api.Client.Models.ProductDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::CleanAspire.Api.Client.Models.ProductDto();
         }
         /// <summary>
@@ -91,12 +91,12 @@ namespace CleanAspire.Api.Client.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "category", n => { Category = n.GetEnumValue<global::CleanAspire.Api.Client.Models.NullableOfProductCategoryDto>(); } },
+                { "category", n => { Category = n.GetEnumValue<global::CleanAspire.Api.Client.Models.ProductCategory>(); } },
                 { "currency", n => { Currency = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "price", n => { Price = n.GetDoubleValue(); } },
+                { "price", n => { Price = n.GetDecimalValue(); } },
                 { "sku", n => { Sku = n.GetStringValue(); } },
                 { "uom", n => { Uom = n.GetStringValue(); } },
             };
@@ -107,13 +107,13 @@ namespace CleanAspire.Api.Client.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::CleanAspire.Api.Client.Models.NullableOfProductCategoryDto>("category", Category);
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::CleanAspire.Api.Client.Models.ProductCategory>("category", Category);
             writer.WriteStringValue("currency", Currency);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteDoubleValue("price", Price);
+            writer.WriteDecimalValue("price", Price);
             writer.WriteStringValue("sku", Sku);
             writer.WriteStringValue("uom", Uom);
             writer.WriteAdditionalData(AdditionalData);

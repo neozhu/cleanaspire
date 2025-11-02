@@ -72,7 +72,7 @@ RowStyleFunc="_rowStyleFunc"
         <PropertyColumn Title="@L["UOM"]" Property="x => x.Uom" />
         <PropertyColumn Title="@L["Price"]" Property="x => x.Price" Sortable="false" AggregateDefinition="_priceAggregation">
             <CellTemplate>
-                @($"{context.Item.Price?.ToString("#,#")} {context.Item.Currency}")
+                @($"{context.Item.Price?.ToString()} {context.Item.Currency}")
             </CellTemplate>
         </PropertyColumn>
     </Columns>

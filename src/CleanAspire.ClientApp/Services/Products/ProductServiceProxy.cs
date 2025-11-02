@@ -221,7 +221,7 @@ public class ProductServiceProxy
                 var productDto = new ProductDto()
                 {
                     Id = productId,
-                    Category = command.Category,
+                    //Category =command.Category,
                     Currency = command.Currency,
                     Description = command.Description,
                     Name = command.Name,
@@ -303,7 +303,7 @@ public class ProductServiceProxy
             var productDto = new ProductDto()
             {
                 Id = command.Id,
-                Category = command.Category,
+                //Category =new ProductDto.ProductDto_category() { ProductCategory = command.Category.ProductCategory },
                 Currency = command.Currency,
                 Description = command.Description,
                 Name = command.Name,

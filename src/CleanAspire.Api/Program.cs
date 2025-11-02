@@ -82,25 +82,24 @@ builder.Services.Scan(scan => scan
     .As<IEndpointRegistrar>()
     .WithScopedLifetime());
 
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o =>
+{
+    o.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+});
+
 builder.Services.AddOpenApi(options =>
 {
     options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
     options.UseCookieAuthentication();
-    options.AddSchemaTransformer((schema, context, cancellationToken) =>
-    {
-        if (context.JsonTypeInfo.Type == typeof(decimal))
-        {
-            schema.Format = "decimal";
-        }
-        if (context.JsonTypeInfo.Type == typeof(int))
-        {
-            schema.Format = "int";
-        }
-        return Task.CompletedTask;
-    });
-    // Always inline enum schemas
-    options.CreateSchemaReferenceId = (type) =>
-        type.Type.IsEnum ? null : OpenApiOptions.CreateDefaultSchemaReferenceId(type);
+    
+    // Add dedicated schema transformers
+    options.AddSchemaTransformer<DecimalAndIntegerSchemaTransformer>();
+    options.AddSchemaTransformer<EnumSchemaTransformer>();
+    options.AddSchemaTransformer<NullOneOfToNullableRefTransformer>();
+    
+    // Add document transformer for enum deduplication
+
+
 });
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
@@ -154,6 +153,9 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = new PathString("/files")
 });
 await app.RunAsync();
+
+
+
 
 
 

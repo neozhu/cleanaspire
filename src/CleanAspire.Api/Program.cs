@@ -82,20 +82,16 @@ builder.Services.Scan(scan => scan
     .As<IEndpointRegistrar>()
     .WithScopedLifetime());
 
-builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o =>
-{
-    o.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
-});
+
 
 builder.Services.AddOpenApi(options =>
 {
-    options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
+    options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
     options.UseCookieAuthentication();
     
     // Add dedicated schema transformers
-    options.AddSchemaTransformer<DecimalAndIntegerSchemaTransformer>();
-    options.AddSchemaTransformer<EnumSchemaTransformer>();
-    options.AddSchemaTransformer<NullOneOfToNullableRefTransformer>();
+    options.AddSchemaTransformer<NumberSchemaTransformer>();
+
     
     // Add document transformer for enum deduplication
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.OpenApi;
 
 namespace CleanAspire.Api;
 
-public sealed class DecimalAndIntegerSchemaTransformer : IOpenApiSchemaTransformer
+public sealed class NumberSchemaTransformer : IOpenApiSchemaTransformer
 {
     public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
     {

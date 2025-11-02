@@ -46,7 +46,7 @@ public class ExportProductsQueryHandler : IRequestHandler<ExportProductsQuery, S
                 SKU = t.SKU,
                 UOM = t.UOM,
                 Currency = t.Currency,
-                Category = (ProductCategoryDto?)t.Category
+                Category = t.Category
             }).ToListAsync(cancellationToken);
 
         var stream = new MemoryStream();

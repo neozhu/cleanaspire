@@ -42,7 +42,7 @@ public class ImportProductsCommandHandler : IRequestHandler<ImportProductsComman
             {
                 SKU = x.SKU,
                 Name = x.Name,
-                Category = (ProductCategory)x.Category,
+                Category = x.Category?? ProductCategory.Electronics,
                 Description = x.Description,
                 Price = x.Price,
                 Currency = x.Currency,

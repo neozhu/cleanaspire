@@ -16,7 +16,7 @@ namespace CleanAspire.Application.Features.Products.Commands;
 public record CreateProductCommand(
     string SKU,
     string Name,
-    ProductCategoryDto? Category,
+    ProductCategory? Category,
     string? Description,
     decimal Price,
     string? Currency,
@@ -42,7 +42,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         {
             SKU = request.SKU,
             Name = request.Name,
-            Category = (ProductCategory)request.Category,
+            Category = request.Category?? ProductCategory.Electronics,
             Description = request.Description,
             Price = request.Price,
             Currency = request.Currency,

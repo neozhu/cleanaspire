@@ -51,7 +51,7 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, P
                                 Id = p.Id,
                                 SKU = p.SKU,
                                 Name = p.Name,
-                                Category = (ProductCategoryDto)p.Category, // Cast to ProductCategoryDto
+                                Category = p.Category, // Cast to ProductCategoryDto
                                 Description = p.Description,
                                 Price = p.Price,
                                 Currency = p.Currency,

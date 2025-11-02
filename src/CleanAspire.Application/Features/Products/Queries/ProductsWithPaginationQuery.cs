@@ -67,7 +67,7 @@ public class ProductsWithPaginationQueryHandler : IRequestHandler<ProductsWithPa
                             SKU = t.SKU,
                             UOM = t.UOM,
                             Currency = t.Currency,
-                            Category = (ProductCategoryDto?)t.Category
+                            Category = t.Category
                         },
                     cancellationToken: cancellationToken);
 

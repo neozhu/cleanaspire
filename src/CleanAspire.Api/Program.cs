@@ -1,20 +1,21 @@
 ﻿using System.Text.Json.Serialization;
 using CleanAspire.Api;
+using CleanAspire.Api.Endpoints;
+using CleanAspire.Api.ExceptionHandlers;
+using CleanAspire.Api.Identity;
+using CleanAspire.Api.Webpushr;
 using CleanAspire.Application;
 using CleanAspire.Application.Common.Services;
 using CleanAspire.Domain.Identities;
 using CleanAspire.Infrastructure;
-using CleanAspire.Infrastructure.Persistence;
-using Microsoft.AspNetCore.Identity;
-using Scalar.AspNetCore;
-using Microsoft.OpenApi;
-using CleanAspire.Api.Identity;
-using Microsoft.Extensions.FileProviders;
-using CleanAspire.Api.Endpoints;
 using CleanAspire.Infrastructure.Configurations;
+using CleanAspire.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.Features;
-using CleanAspire.Api.ExceptionHandlers;
-using CleanAspire.Api.Webpushr;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.OpenApi;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.OpenApi;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -85,6 +86,21 @@ builder.Services.AddOpenApi(options =>
 {
     options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
     options.UseCookieAuthentication();
+    options.AddSchemaTransformer((schema, context, cancellationToken) =>
+    {
+        if (context.JsonTypeInfo.Type == typeof(decimal))
+        {
+            schema.Format = "decimal";
+        }
+        if (context.JsonTypeInfo.Type == typeof(int))
+        {
+            schema.Format = "int";
+        }
+        return Task.CompletedTask;
+    });
+    // Always inline enum schemas
+    options.CreateSchemaReferenceId = (type) =>
+        type.Type.IsEnum ? null : OpenApiOptions.CreateDefaultSchemaReferenceId(type);
 });
 builder.Services.ConfigureHttpJsonOptions(options =>
 {

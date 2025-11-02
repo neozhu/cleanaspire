@@ -16,7 +16,7 @@ public record UpdateProductCommand(
     string Id,
     string SKU,
     string Name,
-    ProductCategoryDto? Category,
+    ProductCategory? Category,
     string? Description,
     decimal Price,
     string? Currency,
@@ -46,9 +46,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
 
         product.SKU = request.SKU;
         product.Name = request.Name;
-        product.Category = request.Category.HasValue
-            ? (ProductCategory)request.Category
-            : product.Category; // Retain existing category if not provided.
+        product.Category = request.Category?? product.Category;
         product.Description = request.Description;
         product.Price = request.Price;
         product.Currency = request.Currency;

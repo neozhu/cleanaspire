@@ -34,7 +34,7 @@ public class StockDto
     /// <summary>
     /// Gets or sets the quantity of the stock.
     /// </summary>
-    public int Quantity { get; set; }
+    public int Quantity { get; set; } = 0;
 
     /// <summary>
     /// Gets or sets the location of the stock.

@@ -12,9 +12,9 @@ using CleanAspire.Application.Pipeline;
 namespace CleanAspire.Application.Features.Stocks.Commands;
 public record StockDispatchingCommand : IFusionCacheRefreshRequest<Unit>, IRequiresValidation
 {
-    public string ProductId { get; init; } = string.Empty;
-    public int Quantity { get; init; }
-    public string Location { get; init; } = string.Empty;
+    public string ProductId { get; set; } = string.Empty;
+    public int Quantity { get; set; }
+    public string Location { get; set; } = string.Empty;
     public IEnumerable<string>? Tags => new[] { "stocks" };
 }
 public class StockDispatchingCommandHandler : IRequestHandler<StockDispatchingCommand, Unit>

@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <RootNamespace>CleanAspire.Infrastructure</RootNamespace>
         <AssemblyName>CleanAspire.Infrastructure</AssemblyName>
+        <NoWarn>$(NoWarn);NU1608</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

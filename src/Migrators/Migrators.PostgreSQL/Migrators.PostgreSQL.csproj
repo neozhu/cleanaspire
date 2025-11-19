@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	  <AssemblyName>CleanAspire.Migrators.PostgreSQL</AssemblyName>
-	  <RootNamespace>CleanAspire.Migrators.PostgreSQL</RootNamespace>
-  </PropertyGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>CleanAspire.Migrators.PostgreSQL</AssemblyName>
+        <RootNamespace>CleanAspire.Migrators.PostgreSQL</RootNamespace>
+        <NoWarn>$(NoWarn);NU1608</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
+    </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <RootNamespace>CleanAspire.Api</RootNamespace>
         <AssemblyName>CleanAspire.Api</AssemblyName>
+        <NoWarn>$(NoWarn);NU1608</NoWarn>
     </PropertyGroup>
     <PropertyGroup>
         <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)</OpenApiDocumentsDirectory>
@@ -16,17 +17,17 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="10.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
         <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-  
+
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Scalar.AspNetCore" Version="2.10.3" />
         <PackageReference Include="Scrutor" Version="6.1.0" />
-       
+
         <PackageReference Include="StrongGrid" Version="0.114.0" />
     </ItemGroup>
     <ItemGroup>

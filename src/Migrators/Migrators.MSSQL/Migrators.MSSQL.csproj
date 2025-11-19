@@ -1,16 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	  <AssemblyName>CleanAspire.Migrators.MSSQL</AssemblyName>
-	  <RootNamespace>CleanAspire.Migrators.MSSQL</RootNamespace>
-      <LangVersion>default</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>CleanAspire.Migrators.MSSQL</AssemblyName>
+        <RootNamespace>CleanAspire.Migrators.MSSQL</RootNamespace>
+        <LangVersion>default</LangVersion>
+        <NoWarn>$(NoWarn);NU1608</NoWarn>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
+    </ItemGroup>
 
 </Project>

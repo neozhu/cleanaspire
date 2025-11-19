@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	  <AssemblyName>CleanAspire.Migrators.SQLite</AssemblyName>
-	  <RootNamespace>CleanAspire.Migrators.SQLite</RootNamespace>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>CleanAspire.Migrators.SQLite</AssemblyName>
+        <RootNamespace>CleanAspire.Migrators.SQLite</RootNamespace>
+        <NoWarn>$(NoWarn);NU1608</NoWarn>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
+    </ItemGroup>
 
 </Project>

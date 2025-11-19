@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="Mediator.Abstractions" Version="3.1.0-preview.5" />
+      <PackageReference Include="Mediator.Abstractions" Version="3.1.0-preview.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.0" />
    
   </ItemGroup>

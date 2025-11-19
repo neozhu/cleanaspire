@@ -87,14 +87,12 @@ https://github.com/neozhu/cleanaspire/issues/34
 
 ### OpenAPI documentation
 - https://apiservice.blazorserver.com/scalar/v1
-- https://cleanapi.blazors.app:8443/scalar/v1
 
 ### Demo site
-- https://cleanweb.blazors.app:8443/
+- https://cleanaspire.blazorserver.com/
 
 ### Blazor WebAssembly Standalone PWA
 - https://standalone.blazorserver.com/
-- https://standalone.blazors.app:8443/
 
 
 ### Here is an example of a docker-compose.yml file for a local Docker deployment:

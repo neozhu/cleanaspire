@@ -8,6 +8,7 @@
         <RootNamespace>CleanAspire.ServiceDefaults</RootNamespace>
         <AssemblyName>CleanAspire.ServiceDefaults</AssemblyName>
         <NoWarn>$(NoWarn);NU1608</NoWarn>
+        <NoWarn>$(NoWarn);NU1107</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

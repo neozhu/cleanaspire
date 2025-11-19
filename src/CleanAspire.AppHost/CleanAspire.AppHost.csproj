@@ -12,6 +12,7 @@
         <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
         <UserSecretsId>ac63aff4-1f44-46a9-9c5d-0b26b517e142</UserSecretsId>
         <NoWarn>$(NoWarn);NU1608</NoWarn>
+        <NoWarn>$(NoWarn);NU1107</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

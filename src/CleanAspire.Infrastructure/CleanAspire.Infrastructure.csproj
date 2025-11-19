@@ -7,6 +7,7 @@
         <RootNamespace>CleanAspire.Infrastructure</RootNamespace>
         <AssemblyName>CleanAspire.Infrastructure</AssemblyName>
         <NoWarn>$(NoWarn);NU1608</NoWarn>
+        <NoWarn>$(NoWarn);NU1107</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

@@ -7,6 +7,7 @@
         <RootNamespace>CleanAspire.Api</RootNamespace>
         <AssemblyName>CleanAspire.Api</AssemblyName>
         <NoWarn>$(NoWarn);NU1608</NoWarn>
+        <NoWarn>$(NoWarn);NU1107</NoWarn>
     </PropertyGroup>
     <PropertyGroup>
         <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)</OpenApiDocumentsDirectory>

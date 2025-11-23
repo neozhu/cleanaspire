@@ -7,8 +7,6 @@
         <AssemblyName>CleanAspire.Migrators.MSSQL</AssemblyName>
         <RootNamespace>CleanAspire.Migrators.MSSQL</RootNamespace>
         <LangVersion>default</LangVersion>
-        <NoWarn>$(NoWarn);NU1608</NoWarn>
-        <NoWarn>$(NoWarn);NU1107</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

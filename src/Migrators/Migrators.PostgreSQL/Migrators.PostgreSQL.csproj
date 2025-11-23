@@ -6,8 +6,6 @@
         <Nullable>enable</Nullable>
         <AssemblyName>CleanAspire.Migrators.PostgreSQL</AssemblyName>
         <RootNamespace>CleanAspire.Migrators.PostgreSQL</RootNamespace>
-        <NoWarn>$(NoWarn);NU1608</NoWarn>
-        <NoWarn>$(NoWarn);NU1107</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

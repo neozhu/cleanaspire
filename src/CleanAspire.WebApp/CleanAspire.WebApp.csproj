@@ -7,8 +7,7 @@
         <UserSecretsId>aa04e12f-2328-4d88-a3b5-5b0dfc063bbe</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..</DockerfileContext>
-        <NoWarn>$(NoWarn);NU1608</NoWarn>
-        <NoWarn>$(NoWarn);NU1107</NoWarn>
+
     </PropertyGroup>
 
     <ItemGroup>

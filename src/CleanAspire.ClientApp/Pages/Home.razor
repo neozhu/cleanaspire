@@ -1,361 +1,278 @@
 ﻿@page "/"
-@using System.Net.Http.Headers
-@using System.Text
+@using MudBlazor
 
-@using Microsoft.Kiota.Abstractions
-@inject IHttpClientFactory HttpClientFactory
-<PageTitle>@L["Home"]</PageTitle>
+<!-- Main Content Container -->
+<div class="landing-page-content">
 
-<MudPaper Class="pa-4 mb-3">
-    <style>
+	<!-- 1. HERO SECTION -->
+	<MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column justify-center align-center py-16" Style="min-height: 85vh;">
 
-        .circle {
-            width: 0.5rem;
-            height: 0.5rem;
-            display: inline-block;
-        }
+		<!-- Version Badge -->
+		<MudChip T="string" Color="Color.Secondary" Variant="Variant.Outlined" Class="mb-6 px-4 animate-fade-in" Style="border-width: 1px;">
+			🚀 Now on .NET 10
+		</MudChip>
 
-        .rounded-circle {
-            border-radius: 50%;
-        }
+		<!-- Title -->
+		<MudText Typo="Typo.h1" Align="Align.Center" Class="mb-2 font-weight-bold hero-title">
+			Build Faster with
+		</MudText>
+		<MudText Typo="Typo.h1" Align="Align.Center" Class="gradient-text hero-title mb-6">
+			CleanAspire
+		</MudText>
 
-        .bg-success {
-            background-color: #28a745 !important;
-        }
+		<!-- Description from README Overview -->
+		<MudText Typo="Typo.h5" Align="Align.Center" Class="mud-text-secondary mb-10" Style="max-width: 900px; line-height: 1.6;">
+			A cutting-edge template for <b>Blazor WebAssembly</b> & <b>PWA</b>.
+			Seamlessly integrates <b>Minimal APIs</b>, <b>Aspire</b>, and <b>Scalar</b> for modern API documentation.
+			Focus on Clean Architecture and extreme code simplicity.
+		</MudText>
 
-        .bg-warning {
-            background-color: #ffc107 !important;
-        }
+		<!-- Action Buttons -->
+		<div class="d-flex gap-4 flex-wrap justify-center">
+			<MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large"
+					   EndIcon="@Icons.Material.Filled.RocketLaunch"
+					   Href="https://cleanaspire.blazorserver.com/" Target="_blank"
+					   Class="px-8 py-3 rounded-xl hover-scale elevation-4">
+				Live Demo
+			</MudButton>
+			<MudButton Variant="Variant.Outlined" Color="Color.Inherit" Size="Size.Large"
+					   StartIcon="@Icons.Custom.Brands.GitHub"
+					   Href="https://github.com/neozhu/cleanaspire" Target="_blank"
+					   Class="px-8 py-3 rounded-xl hover-scale border-solid">
+				GitHub Repo
+			</MudButton>
+		</div>
 
-        .bg-primary {
-            background-color: #0d6efd !important;
-        }
+		<!-- Tech Stack Badges -->
+		<MudStack Row="true" Class="mt-16 opacity-70" Spacing="4" Justify="Justify.Center" Wrap="Wrap.Wrap">
+			@RenderTechBadge(".NET 10")
+			@RenderTechBadge("Aspire")
+			@RenderTechBadge("Blazor PWA")
+			@RenderTechBadge("Scalar")
+			@RenderTechBadge("Kiota")
+			@RenderTechBadge("Docker")
+		</MudStack>
+	</MudContainer>
 
-        .bg-danger {
-            background-color: #dc3545 !important;
-        }
+	<!-- 2. FEATURES GRID (Mapped from README Key Features) -->
+	<MudContainer MaxWidth="MaxWidth.Large" Class="py-20" ID="features">
+		<div class="text-center mb-16">
+			<MudText Typo="Typo.h3" Class="mb-4 font-weight-bold">
+				Powerful <span class="mud-primary-text">Capabilities</span>
+			</MudText>
+			<MudText Typo="Typo.h6" Class="mud-text-secondary">
+				Everything you need for a robust, offline-first enterprise application.
+			</MudText>
+		</div>
 
-        .bg-secondary {
-            background-color: #6c757d !important;
-        }
+		<MudGrid Class="d-flex justify-center" Spacing="4">
+			<!-- Feature 1: Aspire & NET 10 -->
+			@RenderFeatureCard(Icons.Material.Filled.Speed, "Built-in Aspire & .NET 10",
+						"Fully integrated with .NET Aspire for efficient orchestration. Uses the latest .NET 10 features for high-performance Minimal APIs.")
 
-        .bg-dark {
-            background-color: #343a40 !important;
-        }
+			<!-- Feature 2: Scalar & APIs -->
+			@RenderFeatureCard(Icons.Material.Filled.Api, "Minimal APIs & Scalar",
+						"Create concise APIs replaced traditional Swagger with Scalar for beautiful, modern OpenAPI documentation.")
 
-        .bar-label {
-            font-size: .625rem;
-            color: #6c757d;
-        }
+			<!-- Feature 3: Offline PWA (Highlighted) -->
+			@RenderFeatureCard(Icons.Material.Filled.WifiOff, "Robust Offline Support",
+						"Offline mode enabled by default. Uses IndexedDB to cache data locally, ensuring seamless access and data sync when connection restores.")
 
-        .text-nowrap {
-            white-space: nowrap;
-        }
+			<!-- Feature 4: Kiota -->
+			@RenderFeatureCard(Icons.Material.Filled.Hub, "Kiota Client Gen",
+						"Utilizes Microsoft.Kiota to automatically generate strongly-typed API clients, ensuring consistent and error-free client-server communication.")
 
-        .fw-semibold {
-            font-weight: 600;
-        }
+			<!-- Feature 5: Web Push -->
+			@RenderFeatureCard(Icons.Material.Filled.NotificationsActive, "Real-Time Notifications",
+						"Integrated Webpushr to deliver instant browser notifications, keeping users engaged with fully customizable updates.")
 
-        .small, small {
-            font-size: .875em;
-        }
+			<!-- Feature 6: DevOps -->
+			@RenderFeatureCard(Icons.Material.Filled.CloudUpload, "Cloud & CI/CD Ready",
+						"Preconfigured for Docker and includes GitHub Actions workflows for automated building, testing, and deployment.")
+		</MudGrid>
+	</MudContainer>
 
-        .progress {
-            background-color: #e9ecef;
-            border-radius: 0.25rem;
-            overflow: hidden;
-            height: 8px;
-            display: flex;
-        }
+	<!-- 3. AI GENERATION SECTION -->
+	<MudPaper Elevation="0" Class="py-24 mt-8 position-relative overflow-hidden"
+			  Style="background: linear-gradient(135deg, var(--mud-palette-surface) 0%, rgba(var(--mud-palette-primary-rgb), 0.1) 100%); border-top: 1px solid var(--mud-palette-lines-default);">
 
-        .progress-bar {
-            height: 100%;
-            transition: width 0.6s ease;
-        }
+		<!-- Decorative blobs -->
+		<div class="absolute-blob blob-1"></div>
+		<div class="absolute-blob blob-2"></div>
 
-        @@media (max-width: 850px) {
-            .flex-row {
-                flex-wrap: wrap;
-            }
-        }
+		<MudContainer MaxWidth="MaxWidth.Medium" Class="position-relative" Style="z-index: 2;">
+			<div class="d-flex flex-column align-center text-center">
+				<MudAvatar Color="Color.Secondary" Variant="Variant.Filled" Size="Size.Large" Class="my-6 glow-icon" Style="width: 80px; height: 80px;">
+					<MudIcon Icon="@Icons.Material.Filled.AutoAwesome" Size="Size.Large" style="font-size: 2.5rem;" />
+				</MudAvatar>
 
-        .fw-bold {
-            font-weight: 700 !important;
-        }
+				<MudText Typo="Typo.h3" Class="font-weight-bold mb-4">
+					🎉 Auto-generate Code Using Chat GPTs
+				</MudText>
 
-        .fs-5 {
-            font-size: 1.25rem !important;
-        }
+				<MudText Typo="Typo.h6" Class="mud-text-secondary mb-10">
+					Stop writing boilerplate. CleanAspire is optimized for AI-driven development.
+					Use our custom GPT to generate Repositories, Services, and UI components instantly.
+				</MudText>
 
-        .text-muted {
-            color: var(--mud-palette-text-secondary);
-        }
-    </style>
-    <div class="d-flex flex-row gap-3">
-        <div class="d-flex flex-column">
-            <div class="text-muted text-nowrap small">@L["Invoiced amount"]</div>
-            <div class="fs-5 fw-bold text-nowrap">1,167,986 EUR</div>
-        </div>
-        <div class="d-flex flex-column flex-grow-1 gap-3">
-            <div class="d-flex flex-row flex-grow-1">
-                <div class="d-flex flex-column justify-content-between align-center mt-2 flex-grow-1">
-                    <div class="d-flex align-center gap-2">
-                        <div class="circle bg-success rounded-circle"></div>
-                        <span class="bar-label text-nowrap">Paid in full</span>
-                    </div>
-                    <div class="text-nowrap fw-semibold small">789,238 EUR</div>
-                </div>
-                <div class="d-flex flex-column justify-content-between align-center mt-2 flex-grow-1">
-                    <div class="d-flex align-center gap-2">
-                        <div class="circle bg-primary rounded-circle"></div>
-                        <span class="bar-label text-nowrap">Awaiting payment</span>
-                    </div>
-                    <div class="text-nowrap fw-semibold small">244,900 EUR</div>
-                </div>
-                <div class="d-flex flex-column justify-content-between align-center mt-2 flex-grow-1">
-                    <div class="d-flex align-center gap-2">
-                        <div class="circle bg-warning rounded-circle"></div>
-                        <span class="bar-label text-nowrap">Overdue 1-6 days</span>
-                    </div>
-                    <div class="text-nowrap fw-semibold small">74,808 EUR</div>
-                </div>
-                <div class="d-flex flex-column justify-content-between align-center mt-2 flex-grow-1">
-                    <div class="d-flex align-center gap-2">
-                        <div class="circle bg-danger rounded-circle"></div>
-                        <span class="bar-label text-nowrap">Overdue 7-13 days</span>
-                    </div>
-                    <div class="text-nowrap fw-semibold small">32,221 EUR</div>
-                </div>
-                <div class="d-flex flex-column justify-content-between align-center mt-2 flex-grow-1">
-                    <div class="d-flex align-center gap-2">
-                        <div class="circle bg-secondary rounded-circle"></div>
-                        <span class="bar-label text-nowrap">Overdue 14-29 days</span>
-                    </div>
-                    <div class="text-nowrap fw-semibold small">17,338 EUR</div>
-                </div>
-                <div class="d-flex flex-column justify-content-between align-center mt-2 flex-grow-1">
-                    <div class="d-flex align-center gap-2">
-                        <div class="circle bg-dark rounded-circle"></div>
-                        <span class="bar-label text-nowrap">Overdue 30 days or more</span>
-                    </div>
-                    <div class="text-nowrap fw-semibold small">9,481 EUR</div>
-                </div>
-            </div>
-            <div class="progress bg-body mb-2" style="height: 8px;">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 21%;" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 6%;" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 3%;" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-bar bg-secondary" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-bar bg-dark" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
+				<MudButton Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Large"
+						   EndIcon="@Icons.Material.Filled.OpenInNew"
+						   Href="https://chatgpt.com/g/g-677e40252ff88191933bb84567b62e7b-cleanaspire-code-generator" Target="_blank"
+						   Class="px-8 py-3 rounded-xl hover-scale mb-8">
+					Try CleanAspire Code Generator
+				</MudButton>
 
-    </div>
+				<!-- Prompt Example Card -->
+				<MudCard Class="pa-6 tech-card w-100" Style="text-align: left; border-left: 4px solid var(--mud-palette-secondary);">
+					<div class="d-flex align-center mb-2">
+						<MudIcon Icon="@Icons.Material.Filled.Terminal" Class="mr-2 mud-text-secondary" />
+						<MudText Typo="Typo.overline" Color="Color.Secondary">Prompt Example</MudText>
+					</div>
+					<MudText Typo="Typo.body1" Class="font-monospace code-text">
+						"Create a new Feature for 'ProductManagement' using CleanAspire structure. Include the Entity, Repository, Minimal API Endpoint, and a MudBlazor DataGrid view."
+					</MudText>
+				</MudCard>
+			</div>
+		</MudContainer>
+	</MudPaper>
 
+	<!-- 4. FOOTER -->
+	<MudContainer MaxWidth="MaxWidth.Large" Class="py-12">
+		<MudDivider Class="my-8" />
+		<MudGrid>
+			<MudItem xs="12" md="6">
+				<div class="d-flex align-center mb-2">
+					<MudIcon Icon="@Icons.Material.Filled.RocketLaunch" Color="Color.Primary" Class="mr-2" />
+					<MudText Typo="Typo.h6" Class="font-weight-bold">CleanAspire</MudText>
+				</div>
+				<MudText Typo="Typo.caption" Class="mud-text-secondary">
+					© @DateTime.Now.Year CleanAspire Open Source Project.
+				</MudText>
+			</MudItem>
+			<MudItem xs="12" md="6" Class="d-flex justify-md-end gap-6 mt-4 mt-md-0">
+				<MudLink Href="https://cleanaspire.blazorserver.com/" Target="_blank" Color="Color.Inherit">Demo</MudLink>
+				<MudLink Href="https://github.com/neozhu/cleanaspire" Target="_blank" Color="Color.Inherit">GitHub</MudLink>
+				<MudLink Href="https://chatgpt.com/g/g-677e40252ff88191933bb84567b62e7b-cleanaspire-code-generator" Target="_blank" Color="Color.Inherit">AI Tool</MudLink>
+			</MudItem>
+		</MudGrid>
+	</MudContainer>
 
+</div>
 
-</MudPaper>
-
-<MudPaper Class="pa-4 mb-3">
-    <MudText Typo="Typo.h5">@L["Orders List"]</MudText>
-
-    <MudDataGrid T="Order" Items="Orders" Dense="true" Hover="true">
-        <Columns>
-            <PropertyColumn Title="@L["Order Number"]" Property="x => x.OrderNumber" />
-            <PropertyColumn Title="@L["Product"]" Property="x => x.Product" />
-            <PropertyColumn Title="@L["Amount"]" Property="x => x.Amount" CellStyle="text-align:right" HeaderStyle="text-align:right">
-                <CellTemplate>
-                    @context.Item.Amount.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("de-DE")).Replace("€", "EUR ")
-                </CellTemplate>
-                <FooterTemplate>
-                    <MudText Typo="Typo.subtitle1"> @($"Total: {Orders.Sum(x => x.Amount).ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("de-DE")).Replace("€", "EUR ")}")</MudText>
-                </FooterTemplate>
-            </PropertyColumn>
-            <PropertyColumn Title="@L["Status"]" Property="x => x.Status" />
-            <PropertyColumn Title="@L["Customer Name"]" Property="x => x.CustomerName" />
-            <PropertyColumn Title="@L["Order Date"]" Property="x => x.OrderDate" Format="yyyy-MM-dd" />
-
-        </Columns>
-        <PagerContent>
-            <MudDataGridPager T="Order" />
-        </PagerContent>
-    </MudDataGrid>
-</MudPaper>
-
-<MudPaper Class="d-flex flex-row flex-grow-1 gap-4 pa-2" Elevation="0">
-    <MudIcon>
-        <svg width="24" height="24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" transform="rotate(-90)"><circle cx="50" cy="20" r="7" fill="#3498db"><animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" repeatCount="indefinite" /></circle><circle cx="80" cy="50" r="7" fill="#e74c3c"><animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" begin="0.2s" repeatCount="indefinite" /></circle><circle cx="50" cy="80" r="7" fill="#f1c40f"><animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" begin="0.4s" repeatCount="indefinite" /></circle><circle cx="20" cy="50" r="7" fill="#2ecc71"><animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" begin="0.6s" repeatCount="indefinite" /></circle></svg>
-    </MudIcon>
-    <MudPaper Class="mud-theme-primary" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-secondary" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-tertiary" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-info" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-success" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-warning" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-error" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-dark" Width="64px" Height="64px" />
-    <MudPaper Class="mud-theme-surface" Width="64px" Height="64px" />
-</MudPaper>
-<MudPaper Class="d-flex flex-column flex-grow-1 gap-4 pa-2" Elevation="0">
-    <MudFileUpload T="IReadOnlyList<IBrowserFile>" FilesChanged="UploadFiles">
-        <ActivatorContent>
-            <MudButton Variant="Variant.Filled"
-                       Color="Color.Primary"
-                       StartIcon="@Icons.Material.Filled.CloudUpload">
-                Multiple Files
-            </MudButton>
-        </ActivatorContent>
-    </MudFileUpload>
-
-    @if (fileUploadResponses.Any())
-    {
-        <MudSimpleTable Hover Dense Elevation="0">
-            <tbody>
-                @foreach (var item in fileUploadResponses)
-                {
-                    <tr @onclick="()=>OnDownloadFile(item.Url)" style="cursor:pointer">
-                        <td><Thumbnail Path="@item.Path" FileUrl="@item.Url"> </Thumbnail></td>
-                        <td><FileSizeFormatter FileSizeInBytes="@((int)item.Size)"></FileSizeFormatter></td>
-                        <td style="width:50px"><MudIconButton Icon="@Icons.Material.Outlined.Delete" Color="Color.Error" title="@L["Delete"]" OnClick="@(()=>DeleteFile(item))"></MudIconButton></td>
-                    </tr>
-                }
-            </tbody>
-        </MudSimpleTable>
-    }
-
-</MudPaper>
-<MudPaper Class="d-flex flex-row flex-grow-1 gap-4 pa-2" Elevation="0">
-    <MudButton Variant="Variant.Filled">@L["Default"]</MudButton>
-    <MudButton Variant="Variant.Filled" OnClick="Send" Color="Color.Primary">@L["Send Notifications"]</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Info">@L["Info"]</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Error">@L["Error"]</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Secondary">@L["Secondary"]</MudButton>
-    <MudButton Variant="Variant.Filled" Disabled="true">@L["Disabled"]</MudButton>
-</MudPaper>
-<MudPaper Class="d-flex flex-column flex-grow-1 gap-0 pa-2" Elevation="0">
-    <MudText Typo="Typo.h1">@L["H1 Title"]</MudText>
-    <MudText Typo="Typo.h2">@L["H2 Title"]</MudText>
-    <MudText Typo="Typo.h3">H3 Title</MudText>
-    <MudText Typo="Typo.h4">H4 Title</MudText>
-    <MudText Typo="Typo.h5">H5 Title</MudText>
-    <MudText Typo="Typo.h6">H6 Title</MudText>
-
-    <MudText Typo="Typo.subtitle1"> Subtitle1 Blazor</MudText>
-    <MudText Typo="Typo.subtitle2"> Subtitle2 Blazor</MudText>
-    <MudText Typo="Typo.button"> @L["Button Text"]</MudText>
-
-    <MudText Typo="Typo.body1"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body2"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.overline"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.caption"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-
-    <MudText Typo="Typo.body1" Class="mud-secondary-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body1" Class="mud-primary-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body1" Class="mud-error-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body1" Class="mud-info-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body1" Class="mud-warning-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body1" Class="mud-dark-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-    <MudText Typo="Typo.body1" Class="mud-tertiary-text"> Here we add each class to the divs to change the background color, text color and both background and text color with one class only. </MudText>
-</MudPaper>
 <style>
-    @@import url("https://cdn.jsdelivr.net/npm/@@fancyapps/ui@@5.0.36/dist/fancybox/fancybox.css");
+	/* Global Styles mapped to MainLayout Theme Variables */
 
-    .fancybox__container {
-        --fancybox-bg: rgba(24, 24, 27, 0.85);
-        z-index: 9999;
-    }
+	.landing-page-content {
+		font-family: 'Montserrat', 'Segoe UI', sans-serif;
+		overflow-x: hidden;
+	}
 
+	/* Gradient Text */
+	.gradient-text {
+		background: linear-gradient(120deg, var(--mud-palette-primary) 0%, var(--mud-palette-secondary) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	/* Tech Card Styling with Hover Effects */
+	.tech-card {
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+		border: 1px solid var(--mud-palette-lines-default);
+		background-color: var(--mud-palette-surface);
+		height: 100%;
+	}
+
+		.tech-card:hover {
+			transform: translateY(-8px);
+			border-color: var(--mud-palette-primary);
+			box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+		}
+
+	/* Dark Mode specific glow */
+	.mud-theme-dark .tech-card:hover {
+		box-shadow: 0 12px 24px rgba(123, 108, 246, 0.15);
+	}
+
+	/* Button Animations */
+	.hover-scale {
+		transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.5, 1);
+	}
+
+		.hover-scale:hover {
+			transform: scale(1.05);
+		}
+
+	/* Decorative Blobs for AI Section */
+	.absolute-blob {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(80px);
+		opacity: 0.15;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.blob-1 {
+		width: 300px;
+		height: 300px;
+		background: var(--mud-palette-primary);
+		top: -50px;
+		left: -50px;
+	}
+
+	.blob-2 {
+		width: 200px;
+		height: 200px;
+		background: var(--mud-palette-secondary);
+		bottom: -50px;
+		right: -50px;
+	}
+
+	.glow-icon {
+		box-shadow: 0 0 30px var(--mud-palette-secondary-darken);
+	}
+
+	.code-text {
+		font-family: 'Consolas', 'Monaco', monospace;
+		color: var(--mud-palette-text-primary);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	/* Responsive adjustments */
+	@@media (max-width: 600px) {
+		.hero-title {
+			font-size: 2.2rem !important;
+		}
+	}
 </style>
+
 @code {
-    public List<Order> Orders = new List<Order>
-        {
-            new Order { OrderNumber = "ORD0001", Amount = 150.50M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-1), CustomerName = "Alice", ShippingAddress = "123 Main St", Product = "Apple iPhone 15 Pro Max, 256GB, Blue Titanium" },
-            new Order { OrderNumber = "ORD0002", Amount = 220.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 1-6 days", OrderDate = DateTime.Now.AddDays(-5), CustomerName = "Bob", ShippingAddress = "456 Oak Rd", Product = "Samsung Galaxy S23 Ultra, 512GB, Phantom Black" },
-            new Order { OrderNumber = "ORD0003", Amount = 340.75M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 7-13 days", OrderDate = DateTime.Now.AddDays(-10), CustomerName = "Charlie", ShippingAddress = "789 Pine Ln", Product = "Sony WH-1000XM5 Wireless Noise Cancelling Headphones" },
-            new Order { OrderNumber = "ORD0004", Amount = 89.99M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-3), CustomerName = "David", ShippingAddress = "101 Maple Dr", Product = "Logitech MX Master 3S Wireless Mouse" },
-            new Order { OrderNumber = "ORD0005", Amount = 430.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 14-29 days", OrderDate = DateTime.Now.AddDays(-20), CustomerName = "Eva", ShippingAddress = "202 Birch Blvd", Product = "Razer BlackWidow V3 Mechanical Gaming Keyboard" },
-            new Order { OrderNumber = "ORD0006", Amount = 560.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-15), CustomerName = "Frank", ShippingAddress = "303 Cedar Ct", Product = "Dell UltraSharp U2723QE 27-inch 4K USB-C Monitor" },
-            new Order { OrderNumber = "ORD0007", Amount = 99.99M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 30 days or more", OrderDate = DateTime.Now.AddDays(-40), CustomerName = "Grace", ShippingAddress = "404 Elm Ave", Product = "Canon PIXMA TS9120 Wireless Inkjet Printer" },
-            new Order { OrderNumber = "ORD0008", Amount = 205.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-25), CustomerName = "Hannah", ShippingAddress = "505 Willow St", Product = "Apple iPad Air, 64GB, Space Gray" },
-            new Order { OrderNumber = "ORD0009", Amount = 312.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 1-6 days", OrderDate = DateTime.Now.AddDays(-2), CustomerName = "Isaac", ShippingAddress = "606 Fir Ln", Product = "Fitbit Charge 5 Fitness Tracker" },
-            new Order { OrderNumber = "ORD0010", Amount = 420.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-7), CustomerName = "John", ShippingAddress = "707 Maple Ave", Product = "GoPro HERO11 Black Action Camera" },
-            new Order { OrderNumber = "ORD0011", Amount = 188.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 7-13 days", OrderDate = DateTime.Now.AddDays(-12), CustomerName = "Kathy", ShippingAddress = "808 Oak St", Product = "Bose QuietComfort 45 Wireless Noise Cancelling Headphones" },
-            new Order { OrderNumber = "ORD0012", Amount = 500.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-18), CustomerName = "Liam", ShippingAddress = "909 Pine Blvd", Product = "Xbox Series X 1TB Console" },
-            new Order { OrderNumber = "ORD0013", Amount = 139.99M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 14-29 days", OrderDate = DateTime.Now.AddDays(-30), CustomerName = "Mia", ShippingAddress = "1010 Birch Ln", Product = "Samsung T7 Portable SSD, 1TB" },
-            new Order { OrderNumber = "ORD0014", Amount = 249.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-9), CustomerName = "Noah", ShippingAddress = "1111 Cedar Ave", Product = "Anker PowerCore 26800 PD Portable Charger" },
-            new Order { OrderNumber = "ORD0015", Amount = 700.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 30 days or more", OrderDate = DateTime.Now.AddDays(-35), CustomerName = "Olivia", ShippingAddress = "1212 Elm Dr", Product = "Bose SoundLink Revolve+ Bluetooth Speaker" },
-            new Order { OrderNumber = "ORD0016", Amount = 355.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-5), CustomerName = "Paul", ShippingAddress = "1313 Willow Rd", Product = "Herman Miller Aeron Chair" },
-            new Order { OrderNumber = "ORD0017", Amount = 850.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 1-6 days", OrderDate = DateTime.Now.AddDays(-4), CustomerName = "Quincy", ShippingAddress = "1414 Fir Blvd", Product = "Samsung Odyssey G9 49-inch Curved Gaming Monitor" },
-            new Order { OrderNumber = "ORD0018", Amount = 175.00M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-6), CustomerName = "Rita", ShippingAddress = "1515 Maple St", Product = "JBL Flip 6 Bluetooth Speaker" },
-            new Order { OrderNumber = "ORD0019", Amount = 450.00M, Currency = "EUR", Status = "Awaiting payment", OverdueStatus = "Overdue 7-13 days", OrderDate = DateTime.Now.AddDays(-11), CustomerName = "Samuel", ShippingAddress = "1616 Oak Ln", Product = "Epson EcoTank ET-8550 Wireless All-in-One Printer" },
-            new Order { OrderNumber = "ORD0020", Amount = 999.99M, Currency = "EUR", Status = "Paid in full", OverdueStatus = "", OrderDate = DateTime.Now.AddDays(-2), CustomerName = "Tina", ShippingAddress = "1717 Pine Ave", Product = "Apple MacBook Pro 14-inch, M2 Pro, 16GB RAM, 512GB SSD" }
-        };
-    public class Order
-    {
-        public string OrderNumber { get; set; }
-        public decimal Amount { get; set; }
-        public string Currency { get; set; }
-        public string Status { get; set; }
-        public string OverdueStatus { get; set; }
-        public DateTime OrderDate { get; set; }
-        public string CustomerName { get; set; }
-        public string ShippingAddress { get; set; }
-        public string Product { get; set; }
-    }
+	// --- RenderFragments for UI Reusability ---
 
+	// 1. Feature Card Component
+	private RenderFragment RenderFeatureCard(string icon, string title, string description) => __builder =>
+	{
+		<MudItem xs="12" sm="6" md="4" Class="d-flex">
+			<MudCard Class="tech-card pa-4 flex-grow-1 d-flex flex-column" Elevation="0">
+				<MudCardContent>
+					<MudAvatar Variant="Variant.Outlined" Color="Color.Primary" Class="mb-4" Rounded="true">
+						<MudIcon Icon="@icon" />
+					</MudAvatar>
+					<MudText Typo="Typo.h6" Class="mb-2 font-weight-bold">@title</MudText>
+					<MudText Typo="Typo.body2" Class="mud-text-secondary" Style="line-height: 1.6;">@description</MudText>
+				</MudCardContent>
+			</MudCard>
+		</MudItem>
+	};
 
-
-    private async Task Send()
-    {
-        var random = new Random();
-        var titlesAndMessages = new[]
-        {
-            new { Title = "Seize the Day", Message = "Don't wait for tomorrow. Start now and make it happen!" },
-            new { Title = "Teamwork Wins", Message = "Together we can achieve more. Let’s move forward as one!" },
-            new { Title = "Innovation Ahead", Message = "Think outside the box and embrace new challenges." },
-            new { Title = "Stay Curious", Message = "Knowledge is power. Keep learning and exploring!" },
-            new { Title = "Small Steps Matter", Message = "Every journey begins with a single step. Keep going!" }
-        };
-
-        var selected = titlesAndMessages[random.Next(titlesAndMessages.Length)];
-        await WebpushrService.SendNotificationAsync(selected.Title, selected.Message, "https://github.com/neozhu/cleanaspire");
-    }
-
-
-
-    IList<IBrowserFile> files = new List<IBrowserFile>();
-    public List<FileUploadResponse> fileUploadResponses = new List<FileUploadResponse>();
-    private async Task UploadFiles(IReadOnlyList<IBrowserFile> files)
-    {
-        var antiforgeryToken = await ApiClient.FileManagement.AntiforgeryToken.GetAsync();
-        var request = new MultipartBody();
-        request.AddOrReplacePart("overwrite", "text/plain", "false");
-        request.AddOrReplacePart("folder", "text/plain", $"{DateTime.UtcNow.ToString("yyyyMMdd")}");
-        request.AddOrReplacePart($"__{antiforgeryToken.HeaderName}", "text/plain", $"{antiforgeryToken.RequestToken}");
-        var i = 0;
-        foreach (var file in files)
-        {
-            var filename = file.Name;
-            var stream = new MemoryStream();
-            await file.OpenReadStream(int.MaxValue).CopyToAsync(stream);
-            request.AddOrReplacePart($"files[{i++}]", "application/octet-stream", stream, filename);
-        }
-        var response = await ApiClient.FileManagement.Upload.PostAsync(request);
-        if (response is not null && response.Any())
-        {
-            fileUploadResponses.AddRange(response);
-        }
-
-    }
-    private async Task OnDownloadFile(string? str)
-    {
-        // var fileURL = str;
-        await new Fancybox(JS).Preview(str ?? string.Empty, []);
-    }
-    private async Task DeleteFile(FileUploadResponse item)
-    {
-        await ApiClient.FileManagement.DeleteAsync(request => request.QueryParameters.Path = item.Path);
-        fileUploadResponses.Remove(item);
-    }
+	// 2. Tech Badge Component
+	private RenderFragment RenderTechBadge(string text) => __builder =>
+	{
+		<div class="d-flex align-center gap-2 select-none px-2" style="opacity: 0.8;">
+			<MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Secondary" Size="Size.Small" />
+			<MudText Typo="Typo.h6" Class="font-weight-bold" Style="font-size: 1.1rem;">@text</MudText>
+		</div>
+	};
 }

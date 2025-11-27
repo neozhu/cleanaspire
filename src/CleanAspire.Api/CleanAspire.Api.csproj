@@ -26,7 +26,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Scalar.AspNetCore" Version="2.11.0" />
-        <PackageReference Include="Scrutor" Version="6.1.0" />
+        <PackageReference Include="Scrutor" Version="7.0.0" />
 
         <PackageReference Include="StrongGrid" Version="0.114.0" />
     </ItemGroup>

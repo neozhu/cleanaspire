@@ -16,4 +16,8 @@
         <ProjectReference Include="..\..\CleanAspire.Infrastructure\CleanAspire.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
+
 </Project>

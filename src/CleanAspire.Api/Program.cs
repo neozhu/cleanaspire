@@ -59,6 +59,7 @@ builder.Services.AddExceptionHandler<ProblemExceptionHandler>();
 builder.Services.AddIdentityCore<ApplicationUser>(options =>
 {
     options.SignIn.RequireConfirmedEmail = true;
+    options.Stores.SchemaVersion = IdentitySchemaVersions.Version3;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddApiEndpoints();

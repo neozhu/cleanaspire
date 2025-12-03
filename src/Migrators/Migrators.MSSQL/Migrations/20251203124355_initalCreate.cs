@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CleanAspire.Migrators.MSSQL.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCreate : Migration
+    public partial class initalCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,19 +30,19 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    Nickname = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    Provider = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    TenantId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    Avatar = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    RefreshToken = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    Nickname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Provider = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    TenantId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AvatarUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TimeZoneId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    LanguageCode = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    TimeZoneId = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    LanguageCode = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     SuperiorId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -51,7 +51,7 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
                     SecurityStamp = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -72,14 +72,14 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    SKU = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Currency = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
                     UOM = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -88,6 +88,19 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tenants",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tenants", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,8 +149,8 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false)
                 },
@@ -146,6 +159,25 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserPasskeys",
+                columns: table => new
+                {
+                    CredentialId = table.Column<byte[]>(type: "varbinary(1024)", maxLength: 1024, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    Data = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserPasskeys", x => x.CredentialId);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserPasskeys_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -181,8 +213,8 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true)
                 },
                 constraints: table =>
@@ -223,6 +255,30 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Stocks",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    ProductId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stocks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Stocks_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -243,6 +299,11 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserPasskeys_UserId",
+                table: "AspNetUserPasskeys",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -277,6 +338,17 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 table: "Products",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Stocks_ProductId",
+                table: "Stocks",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tenants_Name",
+                table: "Tenants",
+                column: "Name",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -292,6 +364,9 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 name: "AspNetUserLogins");
 
             migrationBuilder.DropTable(
+                name: "AspNetUserPasskeys");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
 
             migrationBuilder.DropTable(
@@ -301,13 +376,19 @@ namespace CleanAspire.Migrators.MSSQL.Migrations
                 name: "AuditTrails");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Stocks");
+
+            migrationBuilder.DropTable(
+                name: "Tenants");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }

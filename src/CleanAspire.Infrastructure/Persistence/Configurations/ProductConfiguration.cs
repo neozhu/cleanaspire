@@ -23,6 +23,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     /// <param name="builder">The builder to be used to configure the Product entity.</param>
     public void Configure(EntityTypeBuilder<Product> builder)
     {
+        builder.Property(x => x.Id).HasMaxLength(50);
         // Configures the Category property to be stored as a string in the database.
         builder.Property(x => x.Category).HasConversion<string>();
 

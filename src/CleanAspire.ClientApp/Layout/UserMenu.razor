@@ -5,7 +5,7 @@
 @inject LayoutService LayoutService
 <MudMenu Class="ml-1" PositionAtCursor="false" AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.BottomLeft">
     <ActivatorContent>
-        <MudStack Row="true" AlignItems="AlignItems.Center">
+        <MudStack Row="true" AlignItems="AlignItems.Center" @onclick="@context.ToggleAsync">
             <MudTooltip Text="@statusTooltip" Delay="300">
                 <div class="avatar-container">
                     @if (RendererInfo.Name == "WebAssembly")

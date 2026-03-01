@@ -15,98 +15,109 @@ public class Theme
     {
         var theme = new MudTheme()
         {
-            PaletteLight = new()
+            PaletteLight = new PaletteLight
             {
-                // **Primary Colors**
-                Primary = "#7C4DFF", // Adjusted purple, used for highlights and key elements
-                Secondary = "#9E9E9E", // Dark gray, secondary color
+                Primary = "#0f172a", // Modern blue, professional and trustworthy
+                PrimaryContrastText = "#ffffff",
+                PrimaryDarken = "#020617",
+                PrimaryLighten = "#1e293b",
+                Secondary = "#71717a",
+                SecondaryContrastText = "#ffffff",
+                SecondaryLighten = "#52525b",
+                SecondaryDarken = "#a1a1aa",
+                Success = "#10b981", // Fresh green, success
+                Info = "#0ea5e9", // Info blue, clear
+                Tertiary = "#8b5cf6",              // Purple 500
+                TertiaryContrastText = "#ffffff",
+                TertiaryDarken = "#7c3aed",        // Purple 600
+                TertiaryLighten = "#a78bfa",       // Purple 400
 
-                // **Background and Surface**
-                Background = "#F5F5F5", // Standard light background color
-                Surface = "#FFFFFF", // Light gray, used for surfaces like cards
+                Warning = "#f59e0b",               // Amber 500
+                WarningContrastText = "#92400e",   // Amber 800
+                WarningDarken = "#d97706",         // Amber 600
+                WarningLighten = "#fbbf24",        // Amber 400
 
-                // **Text Colors**
-                TextPrimary = "#424242", // Dark gray, primary text color
-                TextSecondary = "#6D6D6D", // Medium gray, secondary text color
-                TextDisabled = "rgba(0,0,0,0.38)", // Semi-transparent black, disabled text color
+                Error = "#dc2626", // Clear red, error
+                ErrorContrastText = "#ffffff",
+                ErrorDarken = "#b91c1c",
+                ErrorLighten = "#ef4444",
 
-                // **Accent Colors**
-                Success = "#4CAF50", // Green, used for success messages
-                Warning = "#FF9800", // Orange, used for warning messages
-                Error = "#F44336", // Red, used for error messages
-                Info = "#2196F3", // Blue, used for informational messages
+                Black = "#020617", // Deep blue-black, more texture
+                White = "#ffffff",
+                AppbarBackground = "#f8fafc", // Very light blue-gray, modern
+                AppbarText = "#0a0a0a",
+                Background = "#f8fafc", // Very light blue-gray, modern
+                Surface = "#ffffff",
+                DrawerBackground = "#ffffff",
+                TextPrimary = "#0f172a", // Deep blue-gray, modern professional
+                TextSecondary = "#64748b", // Neutral gray, hierarchy
 
-                // **Contrast Text for Accent Colors**
-                SuccessContrastText = "#FFFFFF", // White, text color for success messages
-                WarningContrastText = "#FFFFFF", // White, text color for warning messages
-                ErrorContrastText = "#FFFFFF", // White, text color for error messages
-                InfoContrastText = "#FFFFFF", // White, text color for informational messages
+                DrawerIcon = "#71717a",
 
-                // **Dividers and Borders**
-                Divider = "rgba(0,0,0,0.12)", // Semi-transparent black, used for dividers
-
-                // **Hover and Ripple Effects**
-                HoverOpacity = 0.04, // Opacity for hover effects
-                RippleOpacity = 0.08, // Opacity for ripple effects
-
-                // **Overlay**
-                OverlayLight = "rgba(255,255,255,0.5)", // Semi-transparent white, used for overlays
-
-                // **App Bar and Navigation**
-                AppbarBackground = "#FFFFFF", // Light surface
-                AppbarText = "#424242", // Dark gray, app bar text color
-                DrawerBackground = "#F5F5F5", // Light surface
-                DrawerText = "#424242", // Dark gray, drawer text color
-
-                // **Contrast Text for Primary Color**
-                PrimaryContrastText = "#FFFFFF", // White, text on primary color
+                TextDisabled = "#94a3b8", // Soft gray
+                ActionDefault = "#262626",
+                ActionDisabled = "rgba(100, 116, 139, 0.4)",
+                ActionDisabledBackground = "rgba(100, 116, 139, 0.1)",
+                Divider = "#e2e8f0", // Elegant divider
+                DividerLight = "#f1f5f9",
+                TableLines = "#e2e8f0", // Table lines, elegant
+                LinesDefault = "#e2e8f0",
+                LinesInputs = "#cbd5e1",
             },
-
-            PaletteDark = new()
+            PaletteDark = new PaletteDark
             {
-                // **Primary Colors**
-                Primary = "#8a2be2", // Deep blue, used for highlights and key elements
-                Secondary = "#B0BEC5", // Light gray, secondary text color
+                Primary = "#fafafa", // shadcn/ui white primary
+                PrimaryContrastText = "#020817",
+                PrimaryDarken = "#e4e4e7",
+                PrimaryLighten = "#ffffff",
+                Secondary = "#78716c", // Neutral gray
+                Success = "#22c55e", // Green for success
+                Info = "#0ea5e9", // Sky blue for info (shadcn sky-500)
+                InfoDarken = "#0284c7", // Darker sky blue (shadcn sky-600)
+                InfoLighten = "#38bdf8", // Lighter sky blue (shadcn sky-400)
 
-                // **Background and Surface**
-                Background = "#121212", // Standard dark mode background color
-                Surface = "#1E1E1E", // Slightly lighter dark gray, used for surfaces like cards
+                Tertiary = "#6366f1",
+                TertiaryContrastText = "#fafafa",
+                TertiaryDarken = "#4f46e5",
+                TertiaryLighten = "#818cf8",
 
-                // **Text Colors**
-                TextPrimary = "#FFFFFF", // White, primary text color
-                TextSecondary = "#B0BEC5", // Light gray, secondary text color
-                TextDisabled = "rgba(255,255,255,0.38)", // Semi-transparent white, disabled text color
+                Warning = "#f59e0b", // Orange for warning
+                WarningContrastText = "#fafafa",
+                WarningDarken = "#d97706",
+                WarningLighten = "#fbbf24",
 
-                // **Accent Colors**
-                Success = "#4CAF50", // Green, used for success messages
-                Warning = "#FFC107", // Amber, used for warning messages
-                Error = "#F44336", // Red, used for error messages
-                Info = "#2196F3", // Blue, used for informational messages
+                Error = "#ef4444", // Red for error
+                ErrorContrastText = "#fafafa",
+                ErrorDarken = "#dc2626",
+                ErrorLighten = "#f87171",
 
-                // **Contrast Text for Accent Colors**
-                SuccessContrastText = "#FFFFFF", // White, text color for success messages
-                WarningContrastText = "#000000", // Black, text color for warning messages
-                ErrorContrastText = "#FFFFFF", // White, text color for error messages
-                InfoContrastText = "#FFFFFF", // White, text color for informational messages
+                Black = "#020817",
+                White = "#fafafa",
+                Background = "#0c0a09", // shadcn/ui dark background
+                Surface = "#171717", // Deeper surface color
+                AppbarBackground = "#0c0a09",
+                AppbarText = "#fafafa",
+                DrawerText = "#fafafa",
+                DrawerIcon = "#a1a1aa",
 
-                // **Dividers and Borders**
-                Divider = "rgba(255,255,255,0.12)", // Semi-transparent white, used for dividers
-
-                // **Hover and Ripple Effects**
-                HoverOpacity = 0.08, // Opacity for hover effects
-                RippleOpacity = 0.12, // Opacity for ripple effects
-
-                // **Overlay**
-                OverlayDark = "rgba(0,0,0,0.5)", // Semi-transparent black, used for overlays
-                OverlayLight = "rgba(30,30,30,0.4)",
-                // **App Bar and Navigation**
-                AppbarBackground = "#1E1E1E", // Same as surface color
-                AppbarText = "#FFFFFF", // White, app bar text color
-                DrawerBackground = "#1E1E1E", // Same as surface color
-                DrawerText = "#FFFFFF", // White, drawer text color
-
-                // **Contrast Text for Primary Color**
-                PrimaryContrastText = "#FFFFFF", // White, text on primary color
+                DrawerBackground = "#0c0a09",
+                TextPrimary = "#fafafa", // shadcn/ui white text
+                TextSecondary = "#a1a1aa", // Neutral gray secondary text
+                TextDisabled = "rgba(161, 161, 170, 0.5)",
+                ActionDefault = "#e5e5e5",
+                ActionDisabled = "rgba(161, 161, 170, 0.3)",
+                ActionDisabledBackground = "rgba(161, 161, 170, 0.1)",
+                Divider = "rgba(255, 255, 255, 0.1)", // shadcn/ui divider color
+                DividerLight = "rgba(161, 161, 170, 0.1)",
+                TableLines = "rgba(255, 255, 255, 0.1)",
+                LinesDefault = "rgba(255, 255, 255, 0.1)",
+                LinesInputs = "rgba(161, 161, 170, 0.2)",
+                DarkContrastText = "#020817",
+                SecondaryContrastText = "#fafafa",
+                SecondaryDarken = "#57534e",
+                SecondaryLighten = "#a8a29e",
+                OverlayLight = "rgba(250, 250, 250, 0.1)",
+                OverlayDark = "rgba(0, 0, 0, 0.8)",
 
 
             },

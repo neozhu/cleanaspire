@@ -63,6 +63,8 @@ public class Theme
                 TableLines = "#e2e8f0", // Table lines, elegant
                 LinesDefault = "#e2e8f0",
                 LinesInputs = "#cbd5e1",
+                OverlayLight = "rgba(248, 250, 252, 0.8)",
+                OverlayDark = "rgba(15, 23, 42, 0.6)"
             },
             PaletteDark = new PaletteDark
             {

@@ -27,7 +27,7 @@
         await ApplyUserPreferences();
         if (_mudThemeProvider != null)
         {
-            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            await _mudThemeProvider.WatchSystemDarkModeAsync(OnSystemPreferenceChanged);
         }
        
     }
@@ -38,7 +38,7 @@
     {
         if (_mudThemeProvider != null)
         {
-            var defaultDarkMode = await _mudThemeProvider.GetSystemPreference();
+            var defaultDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
             if (LayoutService != null)
             {
                 await LayoutService.ApplyUserPreferences(defaultDarkMode);

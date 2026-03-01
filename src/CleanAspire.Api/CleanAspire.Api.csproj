@@ -14,18 +14,18 @@
     <ItemGroup>
         <PackageReference Include="Bogus" Version="35.6.5" />
         <PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="10.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
-        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.0">
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="10.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
 
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Scalar.AspNetCore" Version="2.11.0" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.12.50" />
         <PackageReference Include="Scrutor" Version="7.0.0" />
 
         <PackageReference Include="StrongGrid" Version="0.114.0" />

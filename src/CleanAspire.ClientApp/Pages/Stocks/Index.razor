@@ -81,7 +81,7 @@
     private bool _loading = false;
     private readonly string[] tags = new[] { "stocks" };
     private readonly TimeSpan timeSpan = TimeSpan.FromSeconds(30);
-    private async Task<GridData<StockDto>> ServerReload(GridState<StockDto> state)
+    private async Task<GridData<StockDto>> ServerReload(GridState<StockDto> state,CancellationToken cancellationToken)
     {
         try
         {

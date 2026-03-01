@@ -23,10 +23,7 @@
                             <MudListSubheader Class="pt-4 pb-2">
                                 @L[sub.Label]
                             </MudListSubheader>
-                            @if (sub.SubItems.All(x => x.Status == PageStatus.ComingSoon))
-                            {
-                                <MudOverlay Visible="true" LightBackground="true" Absolute="true" Class="layout-menu-shadow" />
-                            }
+                            
                             @foreach (var nav in sub.SubItems)
                             {
                                 @if (nav.Status == PageStatus.ComingSoon)

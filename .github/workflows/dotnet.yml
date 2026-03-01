@@ -12,27 +12,28 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      # Install CA certificates to ensure SSL trust
-    - name: Install CA Certificates
-      run: sudo apt-get update && sudo apt-get install -y ca-certificates
+      - name: Install CA Certificates
+        run: sudo apt-get update && sudo apt-get install -y ca-certificates
 
-    - uses: actions/checkout@v5
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v5
-      with:
-        dotnet-version: 10.0.x
-        
-      # Trust the ASP.NET Core development certificate
-    - name: Trust ASP.NET Core HTTPS Development Certificate
-      run: dotnet dev-certs https --trust
+      - uses: actions/checkout@v5
 
-    - name: Restore dependencies
-      run: dotnet restore CleanAspire.sln
-    - name: Build
-      run: dotnet build CleanAspire.sln --no-restore
-    - name: Run tests
-      run: dotnet test ./tests/CleanAspire.Tests/CleanAspire.Tests.csproj --no-build --verbosity normal
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      # In CI, generate the HTTPS development cert without OS trust integration.
+      - name: Prepare ASP.NET Core HTTPS Development Certificate
+        run: dotnet dev-certs https
+
+      - name: Restore dependencies
+        run: dotnet restore CleanAspire.slnx
+
+      - name: Build
+        run: dotnet build CleanAspire.slnx --no-restore
+
+      - name: Run tests
+        run: dotnet test ./tests/CleanAspire.Tests/CleanAspire.Tests.csproj --no-build --verbosity normal

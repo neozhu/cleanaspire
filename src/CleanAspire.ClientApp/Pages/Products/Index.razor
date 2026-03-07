@@ -14,8 +14,7 @@ SelectOnRowClick="false"
 RowClick="@(r=>Edit(r.Item))"
 RowStyleFunc="_rowStyleFunc"
 @bind-RowsPerPage="_defaultPageSize"
-@bind-SelectedItems="_selectedItems"
-@bind-SelectedItem="_currentDto">
+@bind-SelectedItems="_selectedItems">
     <ToolBarContent>
         <MudStack Row Spacing="0" Class="flex-grow-1" Justify="Justify.SpaceBetween">
             <MudStack Row AlignItems="AlignItems.Start">

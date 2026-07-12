@@ -25,7 +25,7 @@
                 @bind-Value="@model.Tenant">
 
                 </MultiTenantAutocomplete>
-                <MudTextField @bind-Value="model.Email" For="@(() => model.Email)" Label="@L["Email"]" Placeholder="@L["Email"]" Required="true" RequiredError="@L["Email is required"]"></MudTextField>
+                <MudTextField @bind-Value="model.Email" For="@(() => model.Email)" Label="@L["Email"]" Placeholder="@L["Email"]" Required="true" RequiredError="@L["Email is required"]" Immediate="true"></MudTextField>
                 <MudTextField @bind-Value="model.Nickname" For="@(() => model.Nickname)" Label="@L["Nickname"]" Placeholder="Nickname"></MudTextField>
                 <PasswordInput Field="@(() => model.Password)" @bind-Value="@model.Password"  Label="@L["Password"]" Placeholder="@L["Password"]" RequiredError="@L["Password is required"]" />
                 <PasswordInput Field="@(() => model.ConfirmPassword)" @bind-Value="@model.ConfirmPassword" Label="@L["Confirm password"]" Placeholder="@L["Confirm password"]" RequiredError="@L["Confirm password is required"]" />
@@ -83,8 +83,8 @@
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
         [Required]
-        [StringLength(30, ErrorMessage = "Password must be at least 6 characters long.", MinimumLength = 6)]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{6,}$", ErrorMessage = "Password must be at least 6 characters long and contain at least one letter, one number, and one special character.")]
+        [StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$", ErrorMessage = "Password must be at least 8 characters long and contain at least one letter, one number, and one special character.")]
         public string Password { get; set; } = string.Empty;
         [Required]
         [Compare(nameof(Password))]

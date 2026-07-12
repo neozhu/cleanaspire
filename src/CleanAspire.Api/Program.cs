@@ -60,6 +60,11 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
 {
     options.SignIn.RequireConfirmedEmail = true;
     options.Stores.SchemaVersion = IdentitySchemaVersions.Version3;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 8;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddApiEndpoints();
